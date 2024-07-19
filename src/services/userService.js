@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 let handleUserLogin = (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let userData = {}
+            let userData = {};
             let isExist = await checkUserEmail(email);
             if (isExist) {
                 // user already exits
@@ -21,7 +21,7 @@ let handleUserLogin = (email, password) => {
                 if (user) {
                     // compare password
                     let check = await bcrypt.compareSync(password, user.password); // false
-
+                    //let check = bcrypt.compare(password, user.password);
                     if (check) {
                         userData.errCode = 0;
                         userData.errMessage = 'ok';
